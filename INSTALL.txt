@@ -1,0 +1,79 @@
+# Guia de Instalação - REITs Control
+
+## Passo 1: Copiar Código
+
+1. Abra o arquivo `reits-control.php`
+2. Cole o código PHP completo fornecido no artifact "reits-control-updated"
+
+3. Abra o arquivo `assets/js/script.js`
+4. Cole o código JavaScript completo fornecido no artifact "reits-script-updated"
+
+## Passo 2: Compilar Traduções
+
+Siga as instruções em `COMPILE_TRANSLATIONS.txt` para gerar os arquivos .mo
+
+## Passo 3: Upload para WordPress
+
+1. Comprima a pasta `reits-control` em um arquivo .zip
+2. Acesse WordPress Admin > Plugins > Adicionar Novo
+3. Clique em "Enviar Plugin" e faça upload do .zip
+4. OU: Copie a pasta `reits-control` para `/wp-content/plugins/` via FTP
+
+## Passo 4: Ativar Plugin
+
+1. Acesse WordPress Admin > Plugins
+2. Localize "REITs Control"
+3. Clique em "Ativar"
+
+## Passo 5: Configurar
+
+1. Acesse "REITs – Controle" > "Configurações"
+2. Configure:
+   - Provedor de API (recomendado: Yahoo Finance)
+   - Chave AlphaVantage (opcional)
+   - Duração do cache (padrão: 300 segundos)
+   - Itens por página (padrão: 20)
+
+## Passo 6: Testar
+
+1. Acesse "REITs – Controle" no menu
+2. Adicione um ativo de teste: PETR4.SA
+3. Clique em "Buscar Info"
+4. Verifique se os dados são carregados corretamente
+
+## Verificação de Banco de Dados
+
+Execute no phpMyAdmin ou similar:
+
+```sql
+-- Verificar tabelas criadas
+SHOW TABLES LIKE 'wp_reits_%';
+
+-- Verificar estrutura
+DESCRIBE wp_reits_users;
+DESCRIBE wp_reits_registros;
+DESCRIBE wp_reits_logs;
+```
+
+## Troubleshooting
+
+### Erro: Traduções não carregam
+- Verifique se os arquivos .mo foram compilados corretamente
+- Confirme que estão em `/languages/`
+
+### Erro: APIs não funcionam
+- Teste a API manualmente: "Configurações" > "Testar API"
+- Verifique logs: `SELECT * FROM wp_reits_logs ORDER BY timestamp DESC LIMIT 10;`
+- Desative "Safe Mode" nas configurações
+
+### Erro: "undefined" aparece
+- Limpe o cache do navegador
+- Limpe cache do plugin: "Configurações" > "Limpar Cache"
+- Verifique se script.js foi atualizado corretamente
+
+## Suporte
+
+Para questões técnicas, consulte:
+- README.md
+- Logs do plugin no banco de dados
+- Console do navegador (F12)

@@ -1,0 +1,32 @@
+# Instruções para Compilar Traduções
+
+## Opção 1: Usando Poedit (Recomendado para Windows)
+
+1. Baixe e instale o Poedit: https://poedit.net/
+2. Abra os arquivos .po no Poedit
+3. Clique em "Salvar" - os arquivos .mo serão gerados automaticamente
+
+## Opção 2: Usando gettext (Linux/Mac)
+
+```bash
+# Instalar gettext (se necessário)
+# Ubuntu/Debian: sudo apt-get install gettext
+# Mac: brew install gettext
+
+# Compilar português
+msgfmt languages/reits-control-pt_BR.po -o languages/reits-control-pt_BR.mo
+
+# Compilar japonês
+msgfmt languages/reits-control-ja.po -o languages/reits-control-ja.mo
+```
+
+## Opção 3: Usando compilador online
+
+Acesse: https://po2mo.net/
+Upload dos arquivos .po e faça download dos .mo
+
+## Verificação
+
+Após compilar, verifique se os arquivos .mo foram criados:
+- languages/reits-control-pt_BR.mo
+- languages/reits-control-ja.mo
